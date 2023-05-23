@@ -5,4 +5,4 @@ Kelompok 9
 3. Eka Putri Difayanti (D121221035)
 
 Project: 
-Masih di diskusikan
+Membuat Program Managemen Keuangan dengan menggunakan bahasa C yang akan mencatat berbagai transaksi pendapatan maupun pengeluaran harian.
