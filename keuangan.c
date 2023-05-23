@@ -18,7 +18,7 @@ struct Keuangan
     char keterangan[MAKS];
 };
 
-float menghitungUang(int jumlah_transaksi, struct Keuangan Catat[100])
+float menghitungUang(int jumlah_transaksi, struct keuangan Catat[100])
 {
     float saldo = 0.0;
     for (int i = 0; i < jumlah_transaksi; i++)
@@ -38,7 +38,7 @@ float menghitungUang(int jumlah_transaksi, struct Keuangan Catat[100])
 
 int main()
 {
-    struct Keuangan Catat[100];
+    struct keuangan Catat[100];
     int i, pilihan, jumlah_transaksi = 0;
     char masukan[MAKS];
     int inputKategori, saldo, jumlah;
@@ -98,7 +98,7 @@ int main()
                     printf("\nKategori\t: %s", Catat[j].kategori);
                     printf("\nKeterangan\t: %s", Catat[j].keterangan);
                     printf("\nJumlah(Rp)\t: %s", Catat[j].jumlah);
-                    printf("\n-------------------------\n");
+                    printf("\n-----------------------------\n");
                 }
             }
         }
