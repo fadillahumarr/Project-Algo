@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define MAKS 100
+#define MAKS 50
 
 struct data_tanggal
 {
@@ -18,7 +18,7 @@ struct Keuangan
     char keterangan[MAKS];
 };
 
-float Menghitung_Uang(int jumlah_transaksi, struct Keuangan Catat[MAKS])
+float menghitungUang(int jumlah_transaksi, struct Keuangan Catat[100])
 {
     float saldo = 0.0;
     for (int i = 0; i < jumlah_transaksi; i++)
@@ -38,46 +38,31 @@ float Menghitung_Uang(int jumlah_transaksi, struct Keuangan Catat[MAKS])
 
 int main()
 {
-    struct Keuangan Catat[MAKS];
-    int i, tanggapan, jumlah_transaksi = 0;
+    struct Keuangan Catat[100];
+    int i, pilihan, jumlah_transaksi = 0;
     char masukan[MAKS];
-    int inputKategori;
+    int inputKategori, saldo, jumlah;
     while (1)
     {
-        printf("\n1. Jumlah Uang ");
-        printf("\n2. Mencatat Pemasukan/Pengeluaran");
-        printf("\n3. Menampilkan Riwayat Transaksi");
+        printf("\n1. Mencatat Pemasukan/Pengeluaran");
+        printf("\n2. Menampilkan Riwayat Transaksi");
+        printf("\n3. Total Semua Pendapatan");
+        printf("\n4. Total Semua Pengeluaran");
+        printf("\n5. Saldo Uang Sekarang");
+        printf("\n6. Berhenti pencatatan transaksi");
         printf("\nMasukkan input:");
-        scanf("%d", &tanggapan);
-        if (tanggapan == 1)
+        scanf("%d", &pilihan);
+        if (pilihan == 1)
         {
-            if (jumlah_transaksi == 0)
-            {
-                printf(" ------------------------- ");
-                printf("\n| Jumlah Uang = Rp 0 |\n");
-                printf(" ------------------------- ");
-            }
-            else
-            {
-                float saldo = Menghitung_Uang(jumlah_transaksi, Catat);
-                printf(" ------------------------- ");
-                printf("\n| Jumlah Uang = %.2f |\n", saldo);
-                printf(" ------------------------- ");
-            }
-        }
-        else if (tanggapan == 2)
-        {
-            printf("\nMasukkan Tanggal\t: ");
+            printf("\nMasukkan Tanggal(DD/MM/YYYY)\t: ");
             scanf("%d/%d/%d", &Catat[jumlah_transaksi].tanggal_transaksi.tanggal,
                   &Catat[jumlah_transaksi].tanggal_transaksi.bulan,
                   &Catat[jumlah_transaksi].tanggal_transaksi.tahun);
             getchar();
-            printf("Masukkan Keterangan\t: ");
-            scanf("%[^\n]%*c", Catat[jumlah_transaksi].keterangan);
-            printf("Kategori\t\t:");
+            printf("Kategori:");
             printf("\n1. Pendapatan");
             printf("\n2. Pengeluaran");
-            printf("\nMasukkan kategori(1/2)\t: ");
+            printf("\nMasukkan kategori(1/2)\t\tz: ");
             scanf("%d", &inputKategori);
             getchar();
             if (inputKategori == 1)
@@ -88,17 +73,18 @@ int main()
             {
                 strcpy(Catat[jumlah_transaksi].kategori, "Pengeluaran");
             }
-            // scanf("%[^\n]%*c", Catat[jumlah_transaksi].kategori);
-            printf("Jumlah(Rp)\t\t: ");
+            printf("Masukkan Keterangan\t\t: ");
+            scanf("%[^\n]%*c", Catat[jumlah_transaksi].keterangan);
+            printf("Jumlah(Rp)\t\t\t: ");
             scanf("%[^\n]%*c", Catat[jumlah_transaksi].jumlah);
             jumlah_transaksi++;
         }
-        else if (tanggapan == 3)
+        else if (pilihan == 2)
         {
             if (jumlah_transaksi == 0)
             {
                 printf(" ----------------------------------------------------- ");
-                printf("\n| Belum ada transaksi pendapatan maupun pengeluaran |\n");
+                printf("\n| Belum ada pencatatan transaksi pendapatan maupun pengeluaran |\n");
                 printf(" ----------------------------------------------------- ");
             }
             else
@@ -109,15 +95,62 @@ int main()
                     printf("\nTanggal\t\t: %d/%d/%d", Catat[j].tanggal_transaksi.tanggal,
                            Catat[j].tanggal_transaksi.bulan,
                            Catat[j].tanggal_transaksi.tahun);
-                    printf("\nKeterangan\t: %s", Catat[j].keterangan);
                     printf("\nKategori\t: %s", Catat[j].kategori);
+                    printf("\nKeterangan\t: %s", Catat[j].keterangan);
                     printf("\nJumlah(Rp)\t: %s", Catat[j].jumlah);
                     printf("\n-------------------------\n");
                 }
             }
         }
+        else if (pilihan == 3)
+        {
+            float total_pendapatan = 0.0;
+            for (int i = 0; i < jumlah_transaksi; i++)
+            {
+                if (strcmp(Catat[i].kategori, "Pendapatan") == 0)
+                {
+                    float jumlah = atof(Catat[i].jumlah);
+                    total_pendapatan += jumlah;
+                }
+            }
+            printf("\nTotal Pendapatan = %.2f", total_pendapatan);
+        }
+        else if (pilihan == 4)
+        {
+            float total_pengeluaran = 0.0;
+            for (int i = 0; i < jumlah_transaksi; i++)
+            {
+                if (strcmp(Catat[i].kategori, "Pengeluaran") == 0)
+                {
+                    float jumlah = atof(Catat[i].jumlah);
+                    total_pengeluaran += jumlah;
+                }
+            }
+            printf("\nTotal Pengeluaran = %.2f", total_pengeluaran);
+        }
+        else if (pilihan == 5)
+        {
+            if (jumlah_transaksi == 0)
+            {
+                printf(" --------------------- ");
+                printf("\n| Saldo Uang Sekarang = Rp 0 |\n");
+                printf(" --------------------- ");
+            }
+            else
+            {
+                float saldo = menghitungUang(jumlah_transaksi, Catat);
+                printf(" ---------------------- ");
+                printf("\n| Saldo Uang Sekarang = %.2f |\n", saldo);
+                printf(" ---------------------- ");
+            }
+        }
+        else if (pilihan == 6)
+        {
+            break;
+        }
         else
         {
+            printf("Input Tidak Valid!!!");
             break;
         }
     }
