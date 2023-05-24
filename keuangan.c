@@ -45,6 +45,7 @@ int main()
     int inputKategori, saldo, jumlah;
     while (1)
     {
+        printf("\n-----PROJECT MANAJEMEN KEUANGAN-----\n");
         printf("\n1. Mencatat Pemasukan/Pengeluaran");
         printf("\n2. Menampilkan Riwayat Transaksi");
         printf("\n3. Total Semua Pendapatan");
