@@ -4,6 +4,7 @@
 
 #define MAKS 50
 
+struct data_tanggal;
 struct data_tanggal
 {
     int tanggal;
@@ -12,13 +13,13 @@ struct data_tanggal
 };
 struct Keuangan
 {
-    struct data_tanggal tanggal_transaksi;
     char kategori[MAKS];
     char jumlah[MAKS];
     char keterangan[MAKS];
+    struct data_tanggal tanggal_transaksi;
 };
 
-float menghitungUang(int jumlah_transaksi, struct keuangan Catat[100])
+float menghitungUang(int jumlah_transaksi, struct Keuangan Catat[100])
 {
     float saldo = 0.0;
     for (int i = 0; i < jumlah_transaksi; i++)
@@ -38,7 +39,7 @@ float menghitungUang(int jumlah_transaksi, struct keuangan Catat[100])
 
 int main()
 {
-    struct keuangan Catat[100];
+    struct Keuangan Catat[100];
     int i, pilihan, jumlah_transaksi = 0;
     char masukan[MAKS];
     int inputKategori, saldo, jumlah;
@@ -62,7 +63,7 @@ int main()
             printf("Kategori:");
             printf("\n1. Pendapatan");
             printf("\n2. Pengeluaran");
-            printf("\nMasukkan kategori(1/2)\t\tz: ");
+            printf("\nMasukkan kategori(1/2)\t\t: ");
             scanf("%d", &inputKategori);
             getchar();
             if (inputKategori == 1)
@@ -113,7 +114,9 @@ int main()
                     total_pendapatan += jumlah;
                 }
             }
-            printf("\nTotal Pendapatan = %.2f", total_pendapatan);
+            printf(" ----------------------------- ");
+            printf("\n| Total Pendapatan = %.2f |\n", total_pendapatan);
+            printf(" ----------------------------- ");
         }
         else if (pilihan == 4)
         {
@@ -126,7 +129,9 @@ int main()
                     total_pengeluaran += jumlah;
                 }
             }
-            printf("\nTotal Pengeluaran = %.2f", total_pengeluaran);
+            printf(" ----------------------------- ");
+            printf("\n| Total Pengeluaran = %.2f |\n", total_pengeluaran);
+            printf(" ----------------------------- ");
         }
         else if (pilihan == 5)
         {
