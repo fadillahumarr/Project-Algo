@@ -41,7 +41,6 @@ int main()
 {
     struct Keuangan Catat[100];
     int i, pilihan, jumlah_transaksi = 0;
-    char masukan[MAKS];
     int inputKategori, saldo, jumlah;
     while (1)
     {
@@ -51,7 +50,7 @@ int main()
         printf("\n3. Total Semua Pendapatan");
         printf("\n4. Total Semua Pengeluaran");
         printf("\n5. Saldo Uang Sekarang");
-        printf("\n6. Berhenti pencatatan transaksi");
+        printf("\n6. Berhenti mencatat transaksi");
         printf("\nMasukkan input:");
         scanf("%d", &pilihan);
         if (pilihan == 1)
@@ -85,9 +84,9 @@ int main()
         {
             if (jumlah_transaksi == 0)
             {
-                printf(" ----------------------------------------------------- ");
+                printf(" ---------------------------------------------------------------- ");
                 printf("\n| Belum ada pencatatan transaksi pendapatan maupun pengeluaran |\n");
-                printf(" ----------------------------------------------------- ");
+                printf(" ---------------------------------------------------------------- ");
             }
             else
             {
