@@ -115,7 +115,7 @@ int main()
                 }
             }
             printf(" ----------------------------- ");
-            printf("\n| Total Pendapatan = %.2f |\n", total_pendapatan);
+            printf("\n| Total Pendapatan = Rp %.2f |\n", total_pendapatan);
             printf(" ----------------------------- ");
         }
         else if (pilihan == 4)
@@ -130,7 +130,7 @@ int main()
                 }
             }
             printf(" ----------------------------- ");
-            printf("\n| Total Pengeluaran = %.2f |\n", total_pengeluaran);
+            printf("\n| Total Pengeluaran = Rp %.2f |\n", total_pengeluaran);
             printf(" ----------------------------- ");
         }
         else if (pilihan == 5)
@@ -145,7 +145,7 @@ int main()
             {
                 float saldo = menghitungUang(jumlah_transaksi, Catat);
                 printf(" ---------------------- ");
-                printf("\n| Saldo Uang Sekarang = %.2f |\n", saldo);
+                printf("\n| Saldo Uang Sekarang = Rp %.2f |\n", saldo);
                 printf(" ---------------------- ");
             }
         }
