@@ -40,7 +40,7 @@ float menghitungUang(int jumlah_transaksi, struct Keuangan Catat[100])
 int main()
 {
     struct Keuangan Catat[100];
-    int i, pilihan, jumlah_transaksi = 0;
+    int pilihan, jumlah_transaksi = 0;
     int inputKategori, saldo, jumlah;
     while (1)
     {
@@ -137,9 +137,9 @@ int main()
         {
             if (jumlah_transaksi == 0)
             {
-                printf(" --------------------- ");
+                printf(" -------------------------- ");
                 printf("\n| Saldo Uang Sekarang = Rp 0 |\n");
-                printf(" --------------------- ");
+                printf(" -------------------------- ");
             }
             else
             {
